@@ -1,0 +1,43 @@
+<div
+  id="author-info"
+  style="
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  "
+>
+  <span
+    id="nhs-badge"
+    style="
+      background: #fee2e1;
+      color: #a8464c;
+      padding: 2px 8px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+    "
+    >NHS</span
+  >
+  <img
+    id="author-avatar"
+    src=""
+    alt="Author"
+    style="width: 32px; height: 32px; border-radius: 50%"
+  />
+  <span id="author-details">Loading...</span>
+</div>
+<hr style="border: none; border-top: 1px solid #9e9e9e96; margin: 10px 0; opacity: 0.5" />
+
+<script>
+  if (window.pageData) {
+    document.getElementById("author-avatar").src = window.pageData.avatar;
+    document.getElementById(
+      "author-details"
+    ).innerHTML = `${window.pageData.author} • ${window.pageData.date} • Updated ${window.pageData.modified} • ${window.pageData.readingTime} min read`;
+  }
+</script>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Testimonials Slider</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap");
+
+      #custom-testimonials-slider * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; 
+      }
+
+      #custom-testimonials-slider {
+        font-family: "Montserrat", sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        padding: 40px 20px;
+        color: #333;
+      }
+
+      #custom-testimonials-slider .section-title {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #2d3748 !important;
+        margin-bottom: 3rem !important;
+        text-align: left !important;
+        line-height: 1.2 !important;
+      }
+
+      #custom-testimonials-slider .swiper {
+        width: 100% !important;
+        height: auto !important;
+
+      }
+
+      #custom-testimonials-slider .swiper-slide {
+        height: auto !important;
+        display: flex !important;
+      }
+
+      #custom-testimonials-slider .testimonial-card {
+        background: white !important;
+        border-radius: 16px !important;
+        padding: 1rem !important;
+        height: 100% !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid #e2e8f0 !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 220px !important;
+      }
+
+      #custom-testimonials-slider .testimonial-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+      }
+
+      #custom-testimonials-slider .testimonial-header {
+        margin-bottom: 1.5rem !important;
+      }
+
+      #custom-testimonials-slider .testimonial-title {
+        font-size: 14px!important;
+        font-weight: 600 !important;
+        color: #2d3748 !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.3 !important;
+      }
+
+      #custom-testimonials-slider .testimonial-text {
+        font-size: 12px !important;
+        line-height: 1.6 !important;
+        color: #4a5568 !important;
+        margin-bottom: 1.5rem !important;
+        flex-grow: 1 !important;
+      }
+
+      #custom-testimonials-slider .testimonial-author {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        margin-top: auto !important;
+      }
+
+      #custom-testimonials-slider .author-avatar {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        flex-shrink: 0 !important;
+      }
+
+      #custom-testimonials-slider .author-info {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      #custom-testimonials-slider .author-name {
+        font-weight: 600 !important;
+        color: #2d3748 !important;
+        font-size: 0.9rem !important;
+        line-height: 1.2 !important;
+      }
+
+      #custom-testimonials-slider .author-company {
+        font-size: 0.8rem !important;
+        color: #718096 !important;
+        line-height: 1.2 !important;
+      }
+
+      #custom-testimonials-slider .star-rating {
+        display: flex !important;
+        gap: 2px !important;
+        margin-bottom: 1rem !important;
+      }
+
+      #custom-testimonials-slider .star {
+        color: #fbbf24 !important;
+        font-size: 1.1rem !important;
+      }
+
+      /* Navegación personalizada con ID maestro */
+      #custom-testimonials-slider .swiper-pagination {
+        position: relative !important;
+        margin-top: 2rem !important;
+      }
+
+      #custom-testimonials-slider .swiper-pagination-bullet {
+        width: 12px !important;
+        height: 12px !important;
+        background: #cbd5e0 !important;
+        opacity: 1 !important;
+        transition: all 0.3s ease !important;
+        margin: 0 4px !important;
+      }
+
+      #custom-testimonials-slider .swiper-pagination-bullet-active {
+        background: #4299e1 !important;
+        transform: scale(1.2) !important;
+      }
+
+      #custom-testimonials-slider .swiper-button-next,
+      #custom-testimonials-slider .swiper-button-prev {
+        width: 44px !important;
+        height: 44px !important;
+        background: white !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        color: #4299e1 !important;
+        transition: all 0.3s ease !important;
+        top: 35% !important;
+      }
+
+      #custom-testimonials-slider .swiper-button-next:hover,
+      #custom-testimonials-slider .swiper-button-prev:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+        transform: scale(1.05) !important;
+      }
+
+      #custom-testimonials-slider .swiper-button-next::after,
+      #custom-testimonials-slider .swiper-button-prev::after {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+      }
+
+      @media (max-width: 768px) {
+        #custom-testimonials-slider .section-title {
+          font-size: 2rem !important;
+          margin-bottom: 2rem !important;
+        }
+
+        #custom-testimonials-slider .testimonial-card {
+          padding: 1.5rem !important;
+          min-height: 200px !important;
+        }
+
+        #custom-testimonials-slider .swiper-button-next,
+        #custom-testimonials-slider .swiper-button-prev {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #custom-testimonials-slider {
+          padding: 0 10px !important;
+        }
+
+        #custom-testimonials-slider .testimonial-card {
+          padding: 1.25rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="custom-testimonials-slider" class="testimonials-container">
+      <div class="swiper testimonials-swiper">
+        <div class="swiper-wrapper">
+          <!-- Testimonial 1 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"So easy!"</h3>
+              </div>
+              <p class="testimonial-text">
+                Saved me loads of time versus doing it all myself. The process was straightforward
+                and the results exceeded my expectations.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">AT</div>
+                <div class="author-info">
+                  <span class="author-name">Anna Thompson</span>
+                  <span class="author-company">Trustpilot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"Worth it."</h3>
+              </div>
+              <p class="testimonial-text">
+                Slick, quick, and my updates landed the same day. The customer service was
+                exceptional and very responsive.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">JM</div>
+                <div class="author-info">
+                  <span class="author-name">James Miller</span>
+                  <span class="author-company">Google</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"Secure & clear."</h3>
+              </div>
+              <p class="testimonial-text">
+                The LoA process was simple and transparent. Everything was explained clearly from
+                start to finish.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">MF</div>
+                <div class="author-info">
+                  <span class="author-name">Maria Fernandez</span>
+                  <span class="author-company">Feefo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"Outstanding support!"</h3>
+              </div>
+              <p class="testimonial-text">
+                The team went above and beyond to help me with my project. Their expertise and
+                dedication are unmatched.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">RJ</div>
+                <div class="author-info">
+                  <span class="author-name">Robert Johnson</span>
+                  <span class="author-company">LinkedIn</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"Game changer!"</h3>
+              </div>
+              <p class="testimonial-text">
+                This solution completely transformed how we handle our workflow. Highly recommend to
+                any business looking to improve efficiency.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">SK</div>
+                <div class="author-info">
+                  <span class="author-name">Sarah Kim</span>
+                  <span class="author-company">Microsoft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="star-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <h3 class="testimonial-title">"Professional & reliable"</h3>
+              </div>
+              <p class="testimonial-text">
+                From initial consultation to final delivery, everything was handled with utmost
+                professionalism. Couldn't be happier!
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">DL</div>
+                <div class="author-info">
+                  <span class="author-name">David Lee</span>
+                  <span class="author-company">Amazon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script>
+      // Inicializar Swiper
+      const swiper = new Swiper(".testimonials-swiper", {
+        // Configuración básica
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+
+        // Responsive breakpoints
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+        },
+
+        // Navegación
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // Efectos adicionales
+        effect: "slide",
+        grabCursor: true,
+
+        // Configuración de transiciones
+        speed: 600,
+      });
+
+      // Pausar autoplay al hacer hover
+      const swiperContainer = document.querySelector(".testimonials-swiper");
+      swiperContainer.addEventListener("mouseenter", () => {
+        swiper.autoplay.stop();
+      });
+      swiperContainer.addEventListener("mouseleave", () => {
+        swiper.autoplay.start();
+      });
+    </script>
+  </body>
+</html>

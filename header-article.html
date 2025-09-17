@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SlothMove</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap");
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        border-radius: 16px;
+        padding-right: 0px;
+        padding-left: 0px;
+      }
+
+      header {
+        background-color: #29486b;
+        padding: 32px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        min-width: auto;
+      }
+
+      .header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 64px;
+      }
+
+      .login-button a {
+        background-color: #5bb6de;
+        color: #fff;
+        padding: 8px 32px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3em;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s;
+      }
+      .login-button a:hover {
+        background-color: #3498db;
+      }
+
+      .banner-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 60px;
+      }
+
+      .banner-logo-box {
+        display: flex;
+        align-items: center;
+      }
+
+      .banner-logo-box img {
+        height: auto;
+        width: 380px;
+        max-width: 100%;
+        min-width: 180px;
+      }
+      selector {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        border-radius: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="padding-left: 0; padding-right: 0">
+      <header>
+        <div class="header-bar">
+          <div class="logo">
+            <img
+              src="https://slothmove.com/wp-content/uploads/unlimited_elements/slothmove-change-of-address-service-logo.png"
+              alt="SlothMove Logo"
+            />
+          </div>
+          <div class="login-button">
+            <a href="#">Login</a>
+          </div>
+        </div>
+        <div class="banner-header">
+          <div class="banner-logo-box">
+            <img
+              src="https://slothmove.com/wp-content/uploads/2025/09/slothmove-banner-logo.png"
+              alt="SlothMove Logo"
+            />
+          </div>
+        </div>
+      </header>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Aquí puedes añadir tu código JavaScript
+      });
+    </script>
+  </body>
+</html>
+
+<div id="sticky-toc">
+  <div class="toc-header">ON THIS PAGE</div>
+  <div id="toc-list"></div>
+</div>
+
+<style>
+  #sticky-toc {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    width: 230px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    max-height: 70vh;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  #sticky-toc.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .toc-header {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  #toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 8px;
+  }
+
+  .toc-item a {
+    color: black;
+  }
+
+  .toc-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+  }
+
+  .toc-link:hover {
+    color: #000000;
+    border-left-color: #000000;
+  }
+
+  .toc-link.active {
+    color: #000000;
+    font-weight: 500;
+    border-left-color: #000000;
+  }
+
+  @media (max-width: 768px) {
+    #sticky-toc {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initStickyTOC() {
+    const toc = document.getElementById("sticky-toc");
+    const tocList = document.getElementById("toc-list");
+
+    if (!toc || !tocList) {
+      setTimeout(initStickyTOC, 500);
+      return;
+    }
+
+    let observer = null;
+    let headings = [];
+
+    function findHeadings() {
+      // Buscar solo H2s dentro del contenedor específico
+      const articleContainer = document.getElementById("article-template-container");
+
+      if (!articleContainer) {
+        return false;
+      }
+
+      const allH2s = articleContainer.querySelectorAll("h2");
+
+      headings = Array.from(allH2s)
+        .filter((heading) => {
+          const text = heading.textContent.trim();
+          return text.length > 0 && text !== "Add Your Heading Text Here";
+        })
+        .map((heading, index) => {
+          if (!heading.id) {
+            heading.id = `heading-${index + 1}`;
+          }
+
+          return {
+            element: heading,
+            id: heading.id,
+            text: heading.textContent.trim(),
+            number: index + 1,
+          };
+        });
+
+      return headings.length > 0;
+    }
+
+    function createTOC() {
+      if (headings.length === 0) return;
+
+      tocList.innerHTML = "";
+
+      headings.forEach((heading) => {
+        const tocItem = document.createElement("div");
+        tocItem.className = "toc-item";
+
+        const tocLink = document.createElement("a");
+        tocLink.href = `#${heading.id}`;
+        tocLink.className = "toc-link";
+        tocLink.textContent = `${heading.number}. ${heading.text}`;
+
+        tocLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          heading.element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+
+        tocItem.appendChild(tocLink);
+        tocList.appendChild(tocItem);
+      });
+    }
+
+    function setupScrollSpy() {
+      if (headings.length === 0) return;
+
+      if (observer) {
+        observer.disconnect();
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const link = tocList.querySelector(`a[href="#${entry.target.id}"]`);
+            if (link) {
+              if (entry.isIntersecting) {
+                tocList.querySelectorAll(".toc-link").forEach((l) => l.classList.remove("active"));
+                link.classList.add("active");
+              }
+            }
+          });
+        },
+        {
+          rootMargin: "-20% 0px -70% 0px",
+        }
+      );
+
+      headings.forEach((heading) => {
+        observer.observe(heading.element);
+      });
+    }
+
+    function showTOC() {
+      if (headings.length > 0) {
+        toc.classList.add("show");
+      } else {
+        toc.classList.remove("show");
+      }
+    }
+
+    function updateTOC() {
+      if (findHeadings()) {
+        createTOC();
+        setupScrollSpy();
+        showTOC();
+      } else {
+        setTimeout(updateTOC, 1000);
+      }
+    }
+
+    updateTOC();
+  }
+
+  setTimeout(initStickyTOC, 1000);
+</script>
