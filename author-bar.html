@@ -12,7 +12,7 @@
   "
 >
   <span
-    id="nhs-badge"
+    id="article-badge"
     style="
       background: #fee2e1;
       color: #a8464c;
@@ -34,10 +34,27 @@
 <hr style="border: none; border-top: 1px solid #9e9e9e96; margin: 10px 0; opacity: 0.5" />
 
 <script>
-  if (window.pageData) {
-    document.getElementById("author-avatar").src = window.pageData.avatar;
-    document.getElementById(
-      "author-details"
-    ).innerHTML = `${window.pageData.author} • ${window.pageData.date} • Updated ${window.pageData.modified} • ${window.pageData.readingTime} min read`;
+  function updateAuthorInfo() {
+    if (window.pageData) {
+      // If data exists, display it
+      document.getElementById("author-avatar").src = window.pageData.avatar;
+      document.getElementById(
+        "author-details"
+      ).innerHTML = `${window.pageData.author} • ${window.pageData.date} • Updated ${window.pageData.modified} • ${window.pageData.readingTime} min read`;
+
+      // Update badge text or hide it
+      const badge = document.getElementById("article-badge");
+      if (window.pageData.badgeText) {
+        badge.textContent = window.pageData.badgeText;
+        badge.style.display = ""; // Make sure it's visible
+      } else {
+        badge.style.display = "none"; // Hide if no text is provided
+      }
+    } else {
+      // If not, retry
+      setTimeout(updateAuthorInfo, 100);
+    }
   }
+
+  updateAuthorInfo();
 </script>
