@@ -1,6 +1,6 @@
 <?php
 function add_page_data_script() {
-    if (!is_page()) return;
+    if (!is_singular()) return; // Solo para páginas y posts
     
     // Asegurar que jQuery esté cargado
     wp_enqueue_script('jquery');
@@ -58,7 +58,6 @@ function add_page_data_script() {
             badgeText: ' . json_encode($badge_text) . ',
             debug: ' . json_encode($debug_info) . '
         };
-        console.log("Page Data:", window.pageData);
     ';
     
     wp_add_inline_script('jquery', $script);
